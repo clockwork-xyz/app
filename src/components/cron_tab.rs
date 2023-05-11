@@ -24,7 +24,11 @@ pub fn CronTab(cx: Scope) -> Element {
             onclick: move |e| e.stop_propagation(),
             onkeydown: move |e| {
                 if e.key() == Key::Enter {
-                    cron_result.set(CronAnalyzer::from_expr(expr.clone()))
+                    let analysis = match CronAnalyzer::from_expr(expr.clone()) {
+                        Ok(analysis) => analysis,
+                        Err(e) => format!("{e}")
+                    };
+                    cron_result.set(analysis)
                 } 
             },
         }
