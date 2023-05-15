@@ -10,6 +10,10 @@ pub fn Navbar(cx: Scope) -> Element {
             Logo {}
             div {
                 class: "flex items-center space-x-4",
+                Link {
+                    to: "/cron",
+                    "Cron"            
+                }
                 SearchButton {}
                 ConnectButton {}
             }
